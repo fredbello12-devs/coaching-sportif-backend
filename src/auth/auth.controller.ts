@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Post, Req, UnauthorizedException } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { JwtAuthGuard } from './jwt-auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -10,13 +11,9 @@ export class AuthController {
     return this.authService.login(body.email, body.password);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('profile')
   async profile(@Req() req: any) {
-    const authHeader = req.headers.authorization || '';
-    if (!authHeader.startsWith('Bearer ')) {
-      throw new UnauthorizedException('Token manquant');
-    }
-
-    return this.authService.getProfile();
+    return req.user;
   }
 }

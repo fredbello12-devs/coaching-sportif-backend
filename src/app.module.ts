@@ -1,13 +1,27 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { SessionsModule } from './sessions/sessions.module';
 import { PaymentsModule } from './payments/payments.module';
+import { WeatherModule } from './weather/weather.module';
 
 @Module({
-  imports: [AuthModule, UsersModule, SessionsModule, PaymentsModule],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: process.env.DB_PATH || 'data/db.sqlite',
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      synchronize: true,
+    }),
+    AuthModule,
+    UsersModule,
+    SessionsModule,
+    PaymentsModule,
+    WeatherModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
