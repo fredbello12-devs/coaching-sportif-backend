@@ -267,23 +267,29 @@ Avec `docker-compose.yml` :
 docker compose up
 ```
 
-### Tests unitaires Jest
+### ⚙️ CI/CD avec GitHub Actions
 
-Un test unitaire `src/auth/auth.service.spec.ts` couvre la génération du JWT :
+Un workflow est configuré dans `.github/workflows/ci.yml` :
+- S’exécute automatiquement sur chaque push ou pull request vers `main`.
+- Installe les dépendances (`npm install`).
+- Lance la compilation (`npm run build`).
+- Exécute les tests (`npm run test`).
 
-```bash
-npm run test
-```
+👉 Résultat attendu :
+Chaque commit est validé par un pipeline automatisé (build + test).
 
-### Documentation Swagger
+---
 
-La documentation interactive est disponible sur :
+### 📖 Documentation interactive avec Swagger
 
-```bash
-http://localhost:3001/api/docs
-```
+Swagger est intégré dans `main.ts` :
+- Accessible via `http://localhost:3001/api/docs`
+- Génère automatiquement la documentation des endpoints.
+- Supporte l’authentification Bearer JWT.
+- Les DTO sont annotés avec `@ApiProperty` pour afficher les exemples.
 
-Elle liste tous les endpoints, les DTOs, et permet de tester les routes directement depuis le navigateur.
+👉 Résultat attendu :
+Une documentation interactive et professionnelle des endpoints, utilisable par l’examinateur pour tester l’API directement.
 
 ## Liens GitHub
 
