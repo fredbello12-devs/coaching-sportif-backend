@@ -268,3 +268,8 @@ Un test unitaire `src/auth/auth.service.spec.ts` couvre la génération du JWT :
 ```bash
 npm run test
 ```
+
+### 📂 Liens GitHub
+
+- Backend : https://github.com/fredbello12-devs/coaching-sportif-backend.git
+- Frontend : https://github.com/fredbello12-devs/coaching-sportif-frontend.git
