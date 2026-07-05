@@ -261,6 +261,12 @@ docker build -t coaching-backend .
 docker run -p 3001:3001 coaching-backend
 ```
 
+Avec `docker-compose.yml` :
+
+```bash
+docker compose up
+```
+
 ### Tests unitaires Jest
 
 Un test unitaire `src/auth/auth.service.spec.ts` couvre la génération du JWT :
@@ -269,7 +275,17 @@ Un test unitaire `src/auth/auth.service.spec.ts` couvre la génération du JWT :
 npm run test
 ```
 
-### 📂 Liens GitHub
+### Documentation Swagger
+
+La documentation interactive est disponible sur :
+
+```bash
+http://localhost:3001/api/docs
+```
+
+Elle liste tous les endpoints, les DTOs, et permet de tester les routes directement depuis le navigateur.
+
+## Liens GitHub
 
 - Backend : https://github.com/fredbello12-devs/coaching-sportif-backend.git
 - Frontend : https://github.com/fredbello12-devs/coaching-sportif-frontend.git

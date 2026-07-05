@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateSessionDto = void 0;
 const class_validator_1 = require("class-validator");
+const swagger_1 = require("@nestjs/swagger");
 class CreateSessionDto {
     title;
     description;
@@ -19,21 +20,25 @@ class CreateSessionDto {
 }
 exports.CreateSessionDto = CreateSessionDto;
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 'Séance HIIT' }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], CreateSessionDto.prototype, "title", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 'Session de haute intensité', required: false }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], CreateSessionDto.prototype, "description", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: '2026-07-05T10:00:00.000Z', required: false }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsDateString)(),
     __metadata("design:type", String)
 ], CreateSessionDto.prototype, "date", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({ example: 60, required: false }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsInt)(),
     (0, class_validator_1.Min)(1),

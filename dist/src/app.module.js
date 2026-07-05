@@ -23,8 +23,18 @@ exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
             typeorm_1.TypeOrmModule.forRoot({
-                type: 'sqlite',
-                database: process.env.DB_PATH || 'data/db.sqlite',
+                type: process.env.DATABASE_HOST ? 'postgres' : 'sqlite',
+                ...(process.env.DATABASE_HOST
+                    ? {
+                        host: process.env.DATABASE_HOST,
+                        port: parseInt(process.env.DATABASE_PORT || '5432'),
+                        username: process.env.DATABASE_USER,
+                        password: process.env.DATABASE_PASSWORD,
+                        database: process.env.DATABASE_NAME,
+                    }
+                    : {
+                        database: process.env.DB_PATH || 'data/db.sqlite',
+                    }),
                 entities: [__dirname + '/**/*.entity{.ts,.js}'],
                 synchronize: true,
             }),

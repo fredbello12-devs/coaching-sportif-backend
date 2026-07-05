@@ -9,35 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateUserDto = void 0;
+exports.LoginDto = void 0;
 const class_validator_1 = require("class-validator");
 const swagger_1 = require("@nestjs/swagger");
-const user_entity_1 = require("../user.entity");
-class CreateUserDto {
-    name;
+class LoginDto {
     email;
     password;
-    role;
 }
-exports.CreateUserDto = CreateUserDto;
+exports.LoginDto = LoginDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 'Fred Diop' }),
+    (0, swagger_1.ApiProperty)({ example: 'admin@local' }),
+    (0, class_validator_1.IsEmail)(),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], CreateUserDto.prototype, "name", void 0);
+], LoginDto.prototype, "email", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 'fred@example.com' }),
-    (0, class_validator_1.IsEmail)(),
+    (0, swagger_1.ApiProperty)({ example: 'Admin123!' }),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], CreateUserDto.prototype, "email", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: 'Test123!' }),
-    (0, class_validator_1.MinLength)(6),
-    __metadata("design:type", String)
-], CreateUserDto.prototype, "password", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ enum: user_entity_1.UserRole, example: user_entity_1.UserRole.USER }),
-    (0, class_validator_1.IsEnum)(user_entity_1.UserRole),
-    __metadata("design:type", String)
-], CreateUserDto.prototype, "role", void 0);
-//# sourceMappingURL=create-user.dto.js.map
+], LoginDto.prototype, "password", void 0);
+//# sourceMappingURL=login.dto.js.map
