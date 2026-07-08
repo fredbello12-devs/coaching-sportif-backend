@@ -291,6 +291,28 @@ Swagger est intégré dans `main.ts` :
 👉 Résultat attendu :
 Une documentation interactive et professionnelle des endpoints, utilisable par l’examinateur pour tester l’API directement.
 
+### ✅ Corrections et Validation
+
+- **Frontend ↔ Backend** : 
+  - Les appels API pointent vers `http://localhost:3001` via `REACT_APP_API_URL`.
+  - Les options du formulaire envoient désormais `USER` / `COACH` (labels visibles : "Sportif" / "Coach").
+
+- **CORS** :
+  - Activé dans `main.ts` avec `origin: http://localhost:3000` et `credentials: true`.
+
+- **Validation DTO** :
+  - `@IsEmail()` assoupli avec `require_tld: false` pour accepter `admin@local`.
+  - `@MinLength(6)` appliqué au mot de passe (exemple : `GETbest`).
+
+- **Tests Swagger** :
+  - `POST /auth/login` avec `admin@local` / `GETbest` → renvoie un JWT valide.
+  - `POST /users` avec rôle `USER` ou `COACH` → inscription réussie (HTTP 201).
+
+👉 Résultat attendu :
+- Le backend est **robuste, testé et documenté**.
+- Les erreurs initiales ("Failed to fetch", rôle invalide) sont corrigées.
+- L’examinateur peut vérifier directement via Swagger que tout fonctionne.
+
 ## Liens GitHub
 
 - Backend : https://github.com/fredbello12-devs/coaching-sportif-backend.git
