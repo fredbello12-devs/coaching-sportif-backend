@@ -22,19 +22,19 @@ export class SessionsController {
   }
 
   @Post()
-  @Roles('admin')
+  @Roles('ADMIN')
   create(@Body() dto: CreateSessionDto) {
     return this.svc.create(dto);
   }
 
   @Put(':id')
-  @Roles('admin')
+  @Roles('ADMIN')
   update(@Param('id') id: string, @Body() dto: UpdateSessionDto) {
     return this.svc.update(id, dto);
   }
 
   @Delete(':id')
-  @Roles('admin')
+  @Roles('ADMIN')
   remove(@Param('id') id: string) {
     return this.svc.remove(id);
   }

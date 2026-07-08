@@ -22,19 +22,19 @@ export class PaymentsController {
   }
 
   @Post()
-  @Roles('admin')
+  @Roles('ADMIN')
   create(@Body() dto: CreatePaymentDto) {
     return this.svc.create(dto);
   }
 
   @Put(':id')
-  @Roles('admin')
+  @Roles('ADMIN')
   update(@Param('id') id: string, @Body() dto: UpdatePaymentDto) {
     return this.svc.update(id, dto);
   }
 
   @Delete(':id')
-  @Roles('admin')
+  @Roles('ADMIN')
   remove(@Param('id') id: string) {
     return this.svc.remove(id);
   }

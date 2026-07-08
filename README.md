@@ -313,6 +313,19 @@ Une documentation interactive et professionnelle des endpoints, utilisable par l
 - Les erreurs initiales ("Failed to fetch", rôle invalide) sont corrigées.
 - L’examinateur peut vérifier directement via Swagger que tout fonctionne.
 
+### 🔗 Liaison Frontend ↔ Backend
+
+- **URL backend** : http://localhost:3001
+- **URL frontend** : http://localhost:3000
+- **Configuration** : le frontend utilise `REACT_APP_API_URL=http://localhost:3001` (voir `.env`), et `api.ts` envoie toutes les requêtes vers `process.env.REACT_APP_API_URL` + les endpoints (`/auth/login`, `/users`, `/sessions`, `/payments`).
+- **CORS** : activé dans `main.ts` avec `origin: http://localhost:3000` et `credentials: true`.
+- **Exemple de flux** :
+  1. L’utilisateur saisit ses identifiants dans le formulaire de connexion (`admin@local` / `GETbest`).
+  2. Le frontend appelle `POST /auth/login` → le backend renvoie un **JWT**.
+  3. Le JWT est stocké (`localStorage`) et envoyé dans le header `Authorization: Bearer <token>` pour les **requêtes protégées**.
+  4. Le frontend récupère les données (`GET /users`, `/sessions`, `/payments`) et les affiche dans le tableau de bord.
+  5. L’inscription envoie `USER` / `COACH` (labels "Sportif" / "Coach") via `POST /users` → le backend valide et crée l’utilisateur.
+
 ## Liens GitHub
 
 - Backend : https://github.com/fredbello12-devs/coaching-sportif-backend.git

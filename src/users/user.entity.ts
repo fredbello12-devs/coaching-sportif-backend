@@ -1,9 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 export enum UserRole {
-  USER = 'user',
-  COACH = 'coach',
-  ADMIN = 'admin',
+  USER = 'USER',
+  COACH = 'COACH',
+  ADMIN = 'ADMIN',
 }
 
 @Entity()
