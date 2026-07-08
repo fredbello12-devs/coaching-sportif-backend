@@ -13,9 +13,9 @@ exports.User = exports.UserRole = void 0;
 const typeorm_1 = require("typeorm");
 var UserRole;
 (function (UserRole) {
-    UserRole["USER"] = "user";
-    UserRole["COACH"] = "coach";
-    UserRole["ADMIN"] = "admin";
+    UserRole["USER"] = "USER";
+    UserRole["COACH"] = "COACH";
+    UserRole["ADMIN"] = "ADMIN";
 })(UserRole || (exports.UserRole = UserRole = {}));
 let User = class User {
     id;
